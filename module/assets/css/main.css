@@ -1,0 +1,40 @@
+body,html{
+	padding: 0;
+	margin: 0;
+}
+
+.wrapper{
+	width: 100%;
+	height: 100;
+}
+
+.wrapper .header{
+	position:absolute;
+	top:0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	height: 80px;
+	border: 1px solid red; 
+}
+.wrapper .sidebar{
+	width: 20%;
+	/*height: 40em;*/
+	margin-top:5em;
+	border: 1px solid blue;
+	float: left;
+}
+.wrapper .container{
+	position: absolute;
+	margin:5em 0 0 20%;
+	border:1px solid green;
+	width: 80%;
+	/*height: 40em;*/
+}
+
+.wrapper .footer{
+	position: absolute;
+	margin-top: 45em;
+	height: 50px;
+	border:1px solid red;
+}
