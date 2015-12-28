@@ -15,26 +15,43 @@ body,html{
 	right: 0;
 	margin: 0;
 	height: 80px;
-	border: 1px solid red; 
 }
 .wrapper .sidebar{
 	width: 20%;
-	/*height: 40em;*/
 	margin-top:5em;
 	border: 1px solid blue;
 	float: left;
+	overflow: scroll;
 }
 .wrapper .container{
 	position: absolute;
 	margin:5em 0 0 20%;
 	border:1px solid green;
 	width: 80%;
-	/*height: 40em;*/
 }
 
 .wrapper .footer{
 	position: absolute;
 	margin-top: 45em;
 	height: 50px;
-	border:1px solid red;
+}
+
+.wrapper .sidebar ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	cursor:pointer;
+	display: inline-block;
+	padding: 20px;
+}
+.wrapper .sidebar ul li{
+padding: 3px 0;
+}
+.wrapper .sidebar ul li ul{
+	display:none;
+}
+.wrapper .sidebar ul li ul a{
+text-decoration: none;	
+padding: 5px 0;
+line-height:2;
 }
