@@ -20,7 +20,7 @@
         "attrs": [
             {
                 "description": "Sets horizontal alignment of caption",
-                "range": "\"left\", \"center\", \"right\"",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "captionAlignment"
             },
@@ -377,7 +377,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "renderErrorMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed if an error is encountered while rendering the chart.",
                 "range": "",
@@ -433,7 +433,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "dataLoadStartMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed when chart data begins loading.",
                 "range": "",
@@ -545,7 +545,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "dataLoadErrorMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed if an error is encountered while loading chart data.",
                 "range": "",
@@ -785,8 +785,8 @@
             },
             {
                 "description": "Distance between tick values and tick marks.",
-                "range": "In pixels",
-                "type": "Number",
+                "range": "",
+                "type": "IntegerNumber",
                 "name": "tickValueDistance"
             },
             {
@@ -1093,8 +1093,8 @@
         "attrs": [
             {
                 "description": "This attribute sets the background color for the chart. You can set any hex color code as the value of this attribute. To specify a gradient as background color, separate the hex color codes of each color in the gradient using comma. Example: `#FF5904, #FFFFFF`.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -1106,7 +1106,7 @@
             {
                 "description": "If you've opted for a gradient background, this attribute lets you set the ratio of each color constituent.",
                 "range": "",
-                "type": "Numbers separated by comma",
+                "type": "Ratio of each separated by comma",
                 "name": "bgRatio"
             },
             {
@@ -1153,21 +1153,21 @@
             },
             {
                 "description": "Helps you specify the mode in which the background image is to be displayed. Stretch - expands the image to fit the entire chart area, without maintaining original image constraints. Tile - the image is repeated as a pattern on the entire chart area. Fit - fits the image proportionately on the chart area. Fill -proportionately fills the entire chart area with the image. Center - the image is positioned at the center of the chart area. None - Default mode.",
-                "range": "'stretch', 'tile', 'fit', 'fill', 'center', 'none'",
+                "range": "stretch, tile, fit, fill, center, none",
                 "type": "String",
                 "versionsince": "3.2",
                 "name": "bgImageDisplayMode"
             },
             {
                 "description": "Helps you to vertically align the background image.",
-                "range": "'top', 'middle', 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "versionsince": "3.2",
                 "name": "bgImageVAlign"
             },
             {
                 "description": "Helps you to horizontally align the background image.",
-                "range": "'left', 'middle', 'right'",
+                "range": "left, middle, right",
                 "type": "String",
                 "versionsince": "3.2",
                 "name": "bgImageHAlign"
@@ -1187,7 +1187,7 @@
             },
             {
                 "description": "Where to position the logo on the chart: TL - Top-left TR - Top-right BR - Bottom right BL - Bottom left CC - Center of screen",
-                "range": "'TL', 'TR', 'BL', \n'BR', 'CC'",
+                "range": "TL, TR, BL, BR, CC",
                 "type": "String",
                 "name": "logoPosition"
             },

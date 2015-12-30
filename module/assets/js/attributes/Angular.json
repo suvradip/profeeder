@@ -20,7 +20,7 @@
         "attrs": [
             {
                 "description": "Sets horizontal alignment of caption",
-                "range": "\"left\", \"center\", \"right\"",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "captionAlignment"
             },
@@ -208,7 +208,7 @@
                 "type": "Number",
                 "versionsince": "3.7.0",
                 "name": "hasRTLText"
-            }            
+            }
         ],
         "description": "These attributes let you control a variety of functional elements on the chart. For example, you can opt to show/hide data labels, data values, y-axis values. You can also set chart limits and extended properties. "
     },
@@ -389,7 +389,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "renderErrorMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed if an error is encountered while rendering the chart.",
                 "range": "",
@@ -445,7 +445,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "dataLoadStartMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed when chart data begins loading.",
                 "range": "",
@@ -557,7 +557,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "dataLoadErrorMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed if an error is encountered while loading chart data.",
                 "range": "",
@@ -797,8 +797,8 @@
             },
             {
                 "description": "Distance between tick values and tick marks.",
-                "range": "In pixels",
-                "type": "Number",
+                "range": "",
+                "type": "IntegerNumber",
                 "name": "tickValueDistance"
             },
             {
@@ -913,7 +913,7 @@
             {
                 "description": "Ratio fill mix for the scale.",
                 "range": "",
-                "type": "Ratio of each color separated by comma",
+                "type": "Ratio of each separated by comma",
                 "name": "gaugeFillRatio"
             },
             {
@@ -985,7 +985,7 @@
             {
                 "description": "Gradient fill ratio.",
                 "range": "",
-                "type": "Number separated by commas",
+                "type": "Ratio of each separated by comma",
                 "name": "pivotFillRatio"
             },
             {
@@ -1202,8 +1202,8 @@
         "attrs": [
             {
                 "description": "This attribute sets the background color for the chart. You can set any hex color code as the value of this attribute. To specify a gradient as background color, separate the hex color codes of each color in the gradient using comma. Example: `#FF5904, #FFFFFF`.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -1215,7 +1215,7 @@
             {
                 "description": "If you've opted for a gradient background, this attribute lets you set the ratio of each color constituent.",
                 "range": "",
-                "type": "Numbers separated by comma",
+                "type": "Ratio of each separated by comma",
                 "name": "bgRatio"
             },
             {
@@ -1466,8 +1466,8 @@
             },
             {
                 "description": "Background color for dial. You can either specify a single color (e.g., `CCCCCC`) for solid fill or multiple colors separated by comma to attain a gradient fill.",
-                "range": "Hex Color Code",
-                "type": "List of colors separated by comma",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -1653,7 +1653,6 @@
             },
             {
                 "description": "The starting value for the trend-point. Say, if you want to plot a trend-arc from value 102 to 109, the `startValue` will be 102.",
-                "range": "",
                 "type": "Number",
                 "name": "startValue"
             },

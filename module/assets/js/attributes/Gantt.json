@@ -20,7 +20,7 @@
         "attrs": [
             {
                 "description": "Sets horizontal alignment of caption",
-                "range": "\"left\", \"center\", \"right\"",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "captionAlignment"
             },
@@ -277,7 +277,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "renderErrorMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed if an error is encountered while rendering the chart.",
                 "range": "",
@@ -333,7 +333,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "dataLoadStartMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed when chart data begins loading.",
                 "range": "",
@@ -445,7 +445,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "dataLoadErrorMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed if an error is encountered while loading chart data.",
                 "range": "",
@@ -559,7 +559,7 @@
         "attrs": [
             {
                 "description": "This attribute helps you specify the input date format for all the dates in your XML. This is a mandatory attribute to specify and once specified, all the dates in your XML data should conform to the format specified herein.",
-                "range": "'mm/dd/yyyy' or 'dd/mm/yyyy' or 'yyyy/mm/dd' or 'mm-dd-yyyy' or 'dd-mm-yyyy' or 'yyyy-mm-dd'",
+                "range": "mm/dd/yyyy, dd/mm/yyyy, yyyy/mm/dd, mm-dd-yyyy, dd-mm-yyyy, yyyy-mm-dd",
                 "type": "Date",
                 "name": "dateFormat"
             },
@@ -572,13 +572,13 @@
             {
                 "description": "If you want your Gantt pane to scroll through a specified time line, you can use this attribute to set what timeline the pane will represent. For example, if you want your Gantt pane to show date only for 3 months and then scroll the rest, you can set this attribute as 3. More of this has been explained in the section &quot;Enable scrolling&quot;.",
                 "range": "",
-                "type": "Number",
+                "type": "Ratio of each separated by comma",
                 "name": "ganttPaneDuration"
             },
             {
                 "description": "If you've opted to scroll the Gantt pane, this attribute lets you choose the unit of your specified duration. More of this has been explained in the section &quot;Enable scrolling&quot;.",
-                "range": "'y','m','d','h','mn' or 's'",
-                "type": "String",
+                "range": "",
+                "type": "Ratio of each separated by comma",
                 "name": "ganttPaneDurationUnit"
             },
             {
@@ -686,7 +686,7 @@
             },
             {
                 "description": "Chart will automatically scroll to the given date at the time of rendering. This attribute will only work when `ganttPaneDuration` and `ganttPaneDurationUnit` attributes are set as per requirement. This feature is supported by JavaScript Gantt chart only.",
-                "range": "'mm/dd/yyyy'",
+                "range": "mm/dd/yyyy",
                 "type": "Date",
                 "name": "scrollToDate"
             },
@@ -723,8 +723,8 @@
             },
             {
                 "description": "This attribute sets the background color for the chart. You can set any hex color code as the value of this attribute. To specify a gradient as background color, separate the hex color codes of each color in the gradient using comma. Example: `FF5904, FFFFFF`. Remember to remove # and any spaces in between.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -735,8 +735,8 @@
             },
             {
                 "description": "If you've opted for a gradient background, this attribute lets you set the ratio of each color constituent.",
-                "range": "0-100",
-                "type": "String of numbers",
+                "range": "",
+                "type": "Ratio of each separated by comma",
                 "name": "bgRatio"
             },
             {
@@ -783,21 +783,21 @@
             },
             {
                 "description": "Helps you specify the mode in which the background image is to be displayed. Stretch - expands the image to fit the entire chart area, without maintaining original image constraints. Tile - the image is repeated as a pattern on the entire chart area. Fit - fits the image proportionately on the chart area. Fill -proportionately fills the entire chart area with the image. Center - the image is positioned at the center of the chart area. None - Default mode.",
-                "range": "'stretch', 'tile', 'fit', 'fill', 'center', 'none'",
+                "range": "stretch, tile, fit, fill, center, none",
                 "type": "String",
                 "versionsince": "3.2",
                 "name": "bgImageDisplayMode"
             },
             {
                 "description": "Helps you to vertically align the background image.",
-                "range": "'top', 'middle', 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "versionsince": "3.2",
                 "name": "bgImageVAlign"
             },
             {
                 "description": "Helps you to horizontally align the background image.",
-                "range": "'left', 'middle', 'right'",
+                "range": "left, middle, right",
                 "type": "String",
                 "versionsince": "3.2",
                 "name": "bgImageHAlign"
@@ -824,7 +824,7 @@
             {
                 "description": "Helps you specify canvas background ratio for gradients.",
                 "range": "",
-                "type": "String",
+                "type": "Ratio of each separated by comma",
                 "name": "canvasBgRatio"
             },
             {
@@ -908,7 +908,7 @@
             {
                 "description": "If you're using gradient fill formula for the task bars, this attribute lets you specify the ratio for each color in the gradient.",
                 "range": "",
-                "type": "String of ratios separated by comma",
+                "type": "Ratio of each separated by comma",
                 "name": "taskBarFillRatio"
             },
             {
@@ -943,7 +943,7 @@
             },
             {
                 "description": "Where to position the logo on the chart: TL - Top-left TR - Top-right BR - Bottom right BL - Bottom left CC - Center of screen",
-                "range": "'TL', 'TR', 'BL', \n'BR', 'CC'",
+                "range": "TL, TR, BL, BR, CC",
                 "type": "String",
                 "name": "logoPosition"
             },
@@ -1368,7 +1368,7 @@
         "attrs": [
             {
                 "description": "Horizontal alignment position of category labels.",
-                "range": "'left', 'center' or 'right'",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "align"
             },
@@ -1380,8 +1380,8 @@
             },
             {
                 "description": "Background color for each horizontal visual date line.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -1446,7 +1446,7 @@
             },
             {
                 "description": "Vertical alignment position of category labels.",
-                "range": "'top', 'middle' or 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "name": "vAlign"
             },
@@ -1465,7 +1465,7 @@
         "attrs": [
             {
                 "description": "Horizontal alignment position of the label.",
-                "range": "'left', 'center' or 'right'",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "align"
             },
@@ -1477,8 +1477,8 @@
             },
             {
                 "description": "Background color for this category division.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -1567,7 +1567,7 @@
             },
             {
                 "description": "Vertical alignment position of the label.",
-                "range": "'top', 'middle' or 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "name": "vAlign"
             }
@@ -1580,7 +1580,7 @@
         "attrs": [
             {
                 "description": "Horizontal alignment for all process names.",
-                "range": "'left', 'center' or 'right'",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "align"
             },
@@ -1592,8 +1592,8 @@
             },
             {
                 "description": "Background color for the process name column.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -1616,7 +1616,7 @@
             },
             {
                 "description": "Horizontal alignment position of the header label.",
-                "range": "'left', 'center' or 'right'",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "headerAlign"
             },
@@ -1670,7 +1670,7 @@
             },
             {
                 "description": "Vertical alignment position of the header label.",
-                "range": "'top', 'middle' or 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "name": "headerVAlign"
             },
@@ -1712,7 +1712,7 @@
             },
             {
                 "description": "Whether the process column appears as the left-most column of data grid or right-most?",
-                "range": "'left' or 'right'",
+                "range": "left, right",
                 "type": "String",
                 "name": "positionInGrid"
             },
@@ -1730,7 +1730,7 @@
             },
             {
                 "description": "Vertical alignment for all process names.",
-                "range": "'top', 'middle' or 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "name": "vAlign"
             },
@@ -1749,7 +1749,7 @@
         "attrs": [
             {
                 "description": "Horizontal alignment position for the process name.",
-                "range": "'left', 'center' or 'right'",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "align"
             },
@@ -1761,8 +1761,8 @@
             },
             {
                 "description": "Background color for the process name.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -1845,14 +1845,14 @@
             },
             {
                 "description": "Vertical alignment position for the process name.",
-                "range": "'top', 'middle' or 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "name": "vAlign"
             },
             {
                 "description": "Sets the height for a process row.",
                 "range": "In Pixels",
-                "type": "Number",
+                "type": "in pixels or in percent",
                 "versionsince": "3.5.0",
                 "name": "height"
             }
@@ -2047,7 +2047,7 @@
             {
                 "description": "Height for the task bar either in pixels (e.g., 30 or 25) or in percent (e.g., 25% or 50%)",
                 "range": "In pixels or in percent",
-                "type": "Number",
+                "type": "in pixels or in percent",
                 "name": "height"
             },
             {
@@ -2161,7 +2161,7 @@
             {
                 "description": "Padding required at the top of the task bar either in pixels or in percent.",
                 "range": "In pixels or in percent",
-                "type": "Number",
+                "type": "in pixels or in percent",
                 "name": "topPadding"
             }
         ],
@@ -2173,7 +2173,7 @@
         "attrs": [
             {
                 "description": "Horizontal alignment position for all the cells in the data table.",
-                "range": "'left', 'center' or 'right'",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "align"
             },
@@ -2185,8 +2185,8 @@
             },
             {
                 "description": "Background color for all the cells in the data table.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -2209,7 +2209,7 @@
             },
             {
                 "description": "Horizontal alignment position for all column headers in the data table.",
-                "range": "'left', 'center' or 'right'",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "headerAlign"
             },
@@ -2263,7 +2263,7 @@
             },
             {
                 "description": "Vertical alignment position for all column headers in the data table.",
-                "range": "'top', 'middle' or 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "name": "headerVAlign"
             },
@@ -2287,7 +2287,7 @@
             },
             {
                 "description": "Vertical alignment position for all the cells in the data table.",
-                "range": "'top', 'middle' or 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "name": "vAlign"
             }
@@ -2300,7 +2300,7 @@
         "attrs": [
             {
                 "description": "Horizontal alignment position for all the cells in this data column.",
-                "range": "'left', 'center' or 'right'",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "align"
             },
@@ -2312,8 +2312,8 @@
             },
             {
                 "description": "Background color for all the cells in this data column.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -2336,7 +2336,7 @@
             },
             {
                 "description": "Horizontal alignment position for the column header.",
-                "range": "'left', 'center' or 'right'",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "headerAlign"
             },
@@ -2401,7 +2401,7 @@
             },
             {
                 "description": "Vertical alignment position for the column header.",
-                "range": "'top', 'middle' or 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "name": "headerVAlign"
             },
@@ -2425,7 +2425,7 @@
             },
             {
                 "description": "Vertical alignment position for all the cells in this data column.",
-                "range": "'top', 'middle' or 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "name": "vAlign"
             },
@@ -2444,7 +2444,7 @@
         "attrs": [
             {
                 "description": "Horizontal alignment position of the label.",
-                "range": "'left', 'center' or 'right'",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "align"
             },
@@ -2456,8 +2456,8 @@
             },
             {
                 "description": "Background color for the cell.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -2510,7 +2510,7 @@
             },
             {
                 "description": "Vertical alignment position of the label.",
-                "range": "'top', 'middle' or 'bottom'",
+                "range": "top, middle, bottom",
                 "type": "String",
                 "name": "vAlign"
             }
@@ -2813,14 +2813,14 @@
                 "type": "String",
                 "versionsince": "3.8.0",
                 "name": "trendValueFont"
-            }, 
+            },
             {
                 "description": "Sets the font size for the trend-line display value.",
                 "range": " ",
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueFontSize"
-            },  
+            },
             {
                 "description": "Sets whether the trend-line display value will be bold formatted. \n\nDefault value: 0 (not bold formatted)",
                 "range": "0/1",
@@ -2848,7 +2848,7 @@
                 "type": "Color",
                 "versionsince": "3.8.0",
                 "name": "trendValueBorderColor"
-            }, 
+            },
             {
                 "description": "Sets the transparency for the trend-line display value. \n\nDefault value: 100",
                 "range": "0-100",
@@ -2862,21 +2862,21 @@
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueBgAlpha"
-            }, 
+            },
             {
                 "description": "Sets the transparency for the border around the trend-line display value. \n\nDefault value: 100",
                 "range": "0-100",
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueBorderAlpha"
-            }, 
+            },
             {
                 "description": "Sets padding for the border around the trend-line display value. ",
                 "range": "",
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueBorderPadding"
-            }, 
+            },
             {
                 "description": "Sets the radius for the border around the trend-line display value. ",
                 "range": "",

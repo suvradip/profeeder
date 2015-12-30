@@ -4,7 +4,7 @@
         "attrs": [
             {
                 "description": "This attribute lets you control how the number of columns to show in the visible area of the scroll pane. For example, if you're plotting a chart with 10 columns each in 3 dataset, totaling to 30 columns, and you wish to show only 10 columns in the visible area, set this attribute as 10. You will now see only 10 columns in the chart - rest of the columns will be visible upon scrolling. If you want to show all the columns on the chart irrespective of the number of data points in your XML data document, set this attribute as 0.",
-                "range": "2-number of data items present in XML",
+                "range": "2-1000",
                 "type": "Number",
                 "name": "numVisiblePlot"
             },
@@ -41,7 +41,7 @@
             },
             {
                 "description": "Using this attribute, you can customize the alignment of data labels (x-axis labels). There are 5 options: AUTO, WRAP, STAGGER, ROTATE or NONE. By default, this attribute is set to AUTO mode which means that the alignment of the data labels is determined automatically depending on the size of the chart. WRAP wraps the label text if it is too long to fit in one line. ROTATE rotates the labels vertically. STAGGER divides the labels into multiple lines.",
-                "range": "'AUTO', 'WRAP':, 'STAGGER', 'ROTATE', 'NONE'",
+                "range": "AUTO, WRAP, STAGGER, ROTATE, NONE",
                 "type": "String",
                 "name": "labelDisplay"
             },
@@ -379,7 +379,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "renderErrorMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed if an error is encountered while rendering the chart.",
                 "range": "",
@@ -435,7 +435,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "dataLoadStartMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed when chart data begins loading.",
                 "range": "",
@@ -547,7 +547,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "dataLoadErrorMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed if an error is encountered while loading chart data.",
                 "range": "",
@@ -687,7 +687,7 @@
         "attrs": [
             {
                 "description": "Sets horizontal alignment of caption",
-                "range": "\"left\", \"center\", \"right\"",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "captionAlignment"
             },
@@ -999,8 +999,8 @@
             },
             {
                 "description": "This attribute sets the background color for the chart. You can set any hex color code as the value of this attribute. To specify a gradient as background color, separate the hex color codes of each color in the gradient using comma. Example: `#FF5904, #FFFFFF`.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -1011,8 +1011,8 @@
             },
             {
                 "description": "If you've opted for a gradient background, this attribute lets you set the ratio of each color constituent.",
-                "range": "0-100",
-                "type": "Number",
+                "range": "",
+                "type": "Ratio of each separated by comma",
                 "name": "bgRatio"
             },
             {
@@ -1081,8 +1081,8 @@
             },
             {
                 "description": "Helps you specify canvas background ratio for gradients.",
-                "range": "0-100",
-                "type": "Number",
+                "range": "",
+                "type": "Ratio of each separated by comma",
                 "name": "canvasBgRatio"
             },
             {
@@ -1207,8 +1207,8 @@
             },
             {
                 "description": "If you've opted to fill the plot (column, area etc.) as gradient, this attribute lets you set the ratio for gradient.",
-                "range": "0-100",
-                "type": "Number",
+                "range": "",
+                "type": "Ratio of each separated by comma",
                 "name": "plotFillRatio"
             },
             {
@@ -1219,8 +1219,8 @@
             },
             {
                 "description": "You can globally add a gradient color to the entire plot of chart by specifying the second color as this attribute. For example, if you've specified individual colors for your columns and now you want a gradient that ends in white. You need to specify FFFFFF (white) as this color and the chart will now draw plots as gradient.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "plotGradientColor"
             }
         ],
@@ -1496,7 +1496,7 @@
             },
             {
                 "description": "Sets the legend caption horizontal alignment .",
-                "range": "\"left\", \"center\", \"right\"",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "legendCaptionAlignment"
             },
@@ -2115,8 +2115,8 @@
             },
             {
                 "description": "Sets the background color for x-axis label text.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "versionsince": "3.5.0",
                 "name": "bgColor"
             },
@@ -2260,13 +2260,11 @@
             },
             {
                 "description": "Helps configure the position of vertical line i.e., if a vLine is to be plotted between 2 points Jan and Feb, user can set any position between 0 and 1 to indicate the relative position of vLine between these two points (0 means Jan and 1 means Feb). By default, it’s 0.5 to show in between the points.",
-                "range": "0-1",
                 "type": "Number",
                 "name": "linePosition"
             },
             {
                 "description": "Helps configure the position of the vLine label by setting a relative position between 0 and 1. In vertical charts, 0 means top of canvas and 1 means bottom. In horizontal charts, 0 means left of canvas and 1 means right.",
-                "range": "0-1",
                 "type": "Number",
                 "name": "labelPosition"
             },
@@ -2309,8 +2307,8 @@
             },
             {
                 "description": "If you've opted to show columns as gradients, this attribute lets you control the ratio of each color.",
-                "range": "Comma separated list of ratios",
-                "type": "String",
+                "range": "",
+                "type": "Ratio of each separated by comma",
                 "name": "ratio"
             },
             {
@@ -2443,7 +2441,6 @@
             },
             {
                 "description": "The starting value for the trendline. Say, if you want to plot a slanted trendline from value 102 to 109, the `startValue` will be 102.",
-                "range": "Numeric Value",
                 "type": "Number",
                 "name": "startValue"
             },
@@ -2484,14 +2481,14 @@
                 "type": "String",
                 "versionsince": "3.8.0",
                 "name": "trendValueFont"
-            }, 
+            },
             {
                 "description": "Sets the font size for the trend-line display value.",
                 "range": " ",
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueFontSize"
-            },  
+            },
             {
                 "description": "Sets whether the trend-line display value will be bold formatted. \n\nDefault value: 0 (not bold formatted)",
                 "range": "0/1",
@@ -2519,7 +2516,7 @@
                 "type": "Color",
                 "versionsince": "3.8.0",
                 "name": "trendValueBorderColor"
-            }, 
+            },
             {
                 "description": "Sets the transparency for the trend-line display value. \n\nDefault value: 100",
                 "range": "0-100",
@@ -2533,21 +2530,21 @@
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueBgAlpha"
-            }, 
+            },
             {
                 "description": "Sets the transparency for the border around the trend-line display value. \n\nDefault value: 100",
                 "range": "0-100",
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueBorderAlpha"
-            }, 
+            },
             {
                 "description": "Sets padding for the border around the trend-line display value. ",
                 "range": "",
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueBorderPadding"
-            }, 
+            },
             {
                 "description": "Sets the radius for the border around the trend-line display value. ",
                 "range": "",

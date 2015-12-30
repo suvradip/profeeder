@@ -41,7 +41,7 @@
             },
             {
                 "description": "Using this attribute, you can customize the alignment of data labels (x-axis labels). There are 5 options: AUTO, WRAP, STAGGER, ROTATE or NONE. By default, this attribute is set to AUTO mode which means that the alignment of the data labels is determined automatically depending on the size of the chart. WRAP wraps the label text if it is too long to fit in one line. ROTATE rotates the labels vertically. STAGGER divides the labels into multiple lines.",
-                "range": "'AUTO', 'WRAP':, 'STAGGER', 'ROTATE', 'NONE'",
+                "range": "AUTO, WRAP, STAGGER, ROTATE, NONE",
                 "type": "String",
                 "name": "labelDisplay"
             },
@@ -84,7 +84,7 @@
             },
             {
                 "description": "If you have opted to show data values on the chart, this attribute lets you adjust the vertical alignment of data values with respect to dataplots. By default, this attribute is set to AUTO mode in which the alignment of each data value is determined automatically based on the position of each plot point. In ABOVE mode, data values are displayed above the plot points unless a plot point is too close to the upper edge of the canvas while in BELOW mode, data values are displayed below the plot points unless a plot point is too close to the lower edge of the canvas.",
-                "range": "&quot;ABOVE&quot;, &quot;BELOW&quot;, &quot;AUTO&quot;",
+                "range": "ABOVE, BELOW, AUTO",
                 "type": "String",
                 "versionsince": "3.2",
                 "name": "valuePosition"
@@ -383,7 +383,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "renderErrorMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed if an error is encountered while rendering the chart.",
                 "range": "",
@@ -439,7 +439,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "dataLoadStartMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed when chart data begins loading.",
                 "range": "",
@@ -551,7 +551,7 @@
                 "type": "String",
                 "versionsince": "3.7.0",
                 "name": "dataLoadErrorMessage"
-            },    
+            },
             {
                 "description": "This attribute allows to set a font for the message displayed if an error is encountered while loading chart data.",
                 "range": "",
@@ -830,7 +830,7 @@
         "attrs": [
             {
                 "description": "Sets horizontal alignment of caption",
-                "range": "\"left\", \"center\", \"right\"",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "captionAlignment"
             },
@@ -1148,8 +1148,8 @@
             },
             {
                 "description": "This attribute sets the background color for the chart. You can set any hex color code as the value of this attribute. To specify a gradient as background color, separate the hex color codes of each color in the gradient using comma. Example: `#FF5904, #FFFFFF`.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "name": "bgColor"
             },
             {
@@ -1160,8 +1160,8 @@
             },
             {
                 "description": "If you have opted for a gradient background, this attribute lets you set the ratio of each color constituent.",
-                "range": "0-100",
-                "type": "Number",
+                "range": "",
+                "type": "Ratio of each separated by comma",
                 "name": "bgRatio"
             },
             {
@@ -1232,8 +1232,8 @@
             },
             {
                 "description": "Helps you specify canvas background ratio for gradients.",
-                "range": "0-100",
-                "type": "Number",
+                "range": "",
+                "type": "Ratio of each separated by comma",
                 "name": "canvasBgRatio"
             },
             {
@@ -1712,7 +1712,7 @@
             },
             {
                 "description": "Sets the legend caption horizontal alignment .",
-                "range": "\"left\", \"center\", \"right\"",
+                "range": "left, center, right",
                 "type": "String",
                 "name": "legendCaptionAlignment"
             },
@@ -2331,8 +2331,8 @@
             },
             {
                 "description": "Sets the background color for x-axis label text.",
-                "range": "Hex Color Code",
-                "type": "Color",
+                "range": "",
+                "type": "separate the hex color codes of each color in the gradient using comma",
                 "versionsince": "3.5.0",
                 "name": "bgColor"
             },
@@ -2476,13 +2476,11 @@
             },
             {
                 "description": "Helps configure the position of vertical line that is, if a vLine is to be plotted between 2 points Jan and Feb, user can set any position between 0 and 1 to indicate the relative position of vLine between these two points (0 means Jan and 1 means Feb). By default, it’s 0.5 to show in between the points.",
-                "range": "0-1",
                 "type": "Number",
                 "name": "linePosition"
             },
             {
                 "description": "Helps configure the position of the vLine label by setting a relative position between 0 and 1. In vertical charts, 0 means top of canvas and 1 means bottom. In horizontal charts, 0 means left of canvas and 1 means right.",
-                "range": "0-1",
                 "type": "Number",
                 "name": "labelPosition"
             },
@@ -2533,103 +2531,6 @@
                 "range": "Hex Color Code",
                 "type": "Color",
                 "name": "color"
-            },
-            {
-                "description": "This attribute sets the alpha (transparency) of the entire data-set.",
-                "range": "0-100 or Comma Separated List",
-                "type": "String",
-                "name": "alpha"
-            },
-            {
-                "description": "Whether to show the values for this data-set.",
-                "range": "0/1",
-                "type": "Boolean",
-                "name": "showValues"
-            },
-            {
-                "description": "This attribute lets you adjust the vertical alignment of data values for all dataplots in the dataset. The alignment is set with respect to the position of the dataplots on the chart. By default, the attribute is set to AUTO mode in which the alignment of each data value is determined automatically based on the position of each plot point. In ABOVE mode, data values are displayed above the plot points unless a plot point is too close to the upper edge of the canvas. While in BELOW mode, data values are displayed below the plot points unless a plot point is too close to the lower edge of the canvas. The attribute will function only if showValue attribute is set to 1 in this particular data-set.",
-                "range": "&quot;ABOVE&quot;, &quot;BELOW&quot;, &quot;AUTO&quot;",
-                "type": "String",
-                "versionsince": "3.2",
-                "name": "valuePosition"
-            },
-            {
-                "description": "Whether this data-set would appear as dashed.",
-                "range": "0/1",
-                "type": "Boolean",
-                "name": "dashed"
-            },
-            {
-                "description": "Whether to include the `seriesName` of this data-set in legend. This can be particularly useful when you're using combination charts and you have used the area/line chart to plot a trend, and you do not want the seriesName of that trend to appear in legend.",
-                "range": "0/1",
-                "type": "Boolean",
-                "name": "includeInLegend"
-            },
-            {
-                "description": "Whether to draw anchors for the particular data-set. If the anchors are not shown, then the tool tip and links won't work for the data-set.",
-                "range": "0/1",
-                "type": "Boolean",
-                "name": "drawAnchors"
-            },
-            {
-                "description": "Sets the number of sides that the anchors of the particular data-set will have. For e.g., an anchor with 3 sides would represent a triangle, with 4 it would be a square and so on.",
-                "range": "3-20",
-                "type": "Number",
-                "name": "anchorSides"
-            },
-            {
-                "description": "This attribute sets the radius (in pixels) of the anchors of the particular data-set. ",
-                "range": "In Pixels",
-                "type": "Number",
-                "name": "anchorRadius"
-            },
-            {
-                "description": "Thickness of the lines for the particular data-set.",
-                "range": "In Pixels",
-                "type": "Number",
-                "name": "lineThickness"
-            },
-            {
-                "description": "If the lines are to be shown as dash for the particular data-set, this attribute defines the length of dash.",
-                "range": "In Pixels",
-                "type": "Number",
-                "name": "lineDashLen"
-            },
-            {
-                "description": "Sets the gap between two consecutive dashes.",
-                "range": "In Pixels",
-                "type": "Number",
-                "name": "lineDashGap"
-            },
-            {
-                "description": "Lets you set the border color of anchors of the particular data-set.",
-                "range": "Hex Color Code",
-                "type": "Color",
-                "name": "anchorBorderColor"
-            },
-            {
-                "description": "Helps you set border thickness of anchors of the particular data-set.",
-                "range": "In Pixels",
-                "type": "Number",
-                "name": "anchorBorderThickness"
-            },
-            {
-                "description": "Helps you set the background color of anchors of the particular data-set.",
-                "range": "Hex Color Code",
-                "type": "Color",
-                "name": "anchorBgColor"
-            },
-            {
-                "description": "Helps you set the alpha of entire anchors of the particular data-set. If you need to hide the anchors for the data-set but still enable tool tips, set this as 0.",
-                "range": "0-100",
-                "type": "Number",
-                "name": "anchorAlpha"
-            },
-            {
-                "description": "Helps you set the alpha of anchor background of the particular data-set.",
-                "range": "0-100",
-                "type": "Number",
-                "name": "anchorBgAlpha"
             }
         ],
         "description": "Each `dataset` object contains a series of data. For example, for a monthly sales comparison chart for two successive years, the first data-set would contain the data for first year and the next one for the second year. You can provide data-set level cosmetics so that all data within that data-set will be plotted in the same color/alpha/etc. Depending on the chart type, there are a number of attributes that you can define for each `dataset` object."
@@ -2694,7 +2595,7 @@
             },
             {
                 "description": "If you have opted to show a particular data value on the chart, this attribute lets you adjust the vertical alignment of individual data values with respect to dataplots. By default, this attribute is set to AUTO mode in which the alignment of a data value is determined automatically based on the position of its plot point. In ABOVE mode, a data value is displayed above the plot point unless a plot point is too close to the upper edge of the canvas while in BELOW mode, a data value is displayed below the plot point unless a plot point is too close to the lower edge of the canvas.",
-                "range": "&quot;ABOVE&quot;, &quot;BELOW&quot;, &quot;AUTO&quot;",
+                "range": "ABOVE, BELOW, AUTO",
                 "type": "String",
                 "versionsince": "3.2",
                 "name": "valuePosition"
@@ -2816,7 +2717,6 @@
             },
             {
                 "description": "The starting value for the trendline. Say, if you want to plot a slanted trendline from value 102 to 109, the `startValue` would be 102.",
-                "range": "Numeric Value",
                 "type": "Number",
                 "name": "startValue"
             },
@@ -2851,14 +2751,14 @@
                 "type": "String",
                 "versionsince": "3.8.0",
                 "name": "trendValueFont"
-            }, 
+            },
             {
                 "description": "Sets the font size for the trend-line display value.",
                 "range": " ",
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueFontSize"
-            },  
+            },
             {
                 "description": "Sets whether the trend-line display value will be bold formatted. \n\nDefault value: 0 (not bold formatted)",
                 "range": "0/1",
@@ -2886,7 +2786,7 @@
                 "type": "Color",
                 "versionsince": "3.8.0",
                 "name": "trendValueBorderColor"
-            }, 
+            },
             {
                 "description": "Sets the transparency for the trend-line display value. \n\nDefault value: 100",
                 "range": "0-100",
@@ -2900,21 +2800,21 @@
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueBgAlpha"
-            }, 
+            },
             {
                 "description": "Sets the transparency for the border around the trend-line display value. \n\nDefault value: 100",
                 "range": "0-100",
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueBorderAlpha"
-            }, 
+            },
             {
                 "description": "Sets padding for the border around the trend-line display value. ",
                 "range": "",
                 "type": "Number",
                 "versionsince": "3.8.0",
                 "name": "trendValueBorderPadding"
-            }, 
+            },
             {
                 "description": "Sets the radius for the border around the trend-line display value. ",
                 "range": "",

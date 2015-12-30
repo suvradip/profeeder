@@ -19,21 +19,67 @@ body,html{
 .wrapper .sidebar{
 	width: 20%;
 	margin-top:5em;
-	border: 1px solid blue;
 	float: left;
-	overflow: scroll;
+	overflow: auto;
+	border: 1px solid #f5f5f0;
 }
 .wrapper .container{
 	position: absolute;
 	margin:5em 0 0 20%;
-	border:1px solid green;
-	width: 80%;
+	width: 79%;
+}
+
+.wrapper .container .chart-area{
+	width: 57%;
+	height: 30em;
+	float: right;
+	border: 1px solid #f5f5f0;
+	overflow: auto;
+}
+.wrapper .container .code-area{
+	height: 30em;
+	width: 42%;
+	position: absolute;
+}
+textarea{
+	height: 99%;
+	width: 100%;
+	resize:none;
+}
+
+.wrapper .container .chart-attribute-settings{
+	margin-top: 30em;
+	border: 1px solid #f5f5f0;
+	width: 100%;
+	height: 10em;
+	padding-top: 5px;
+	overflow: auto;
+}
+
+input{
+	margin: 5px;
+}
+
+select{
+	margin: 5px;
+}
+
+input[type="text"]{
+	width:100px; 
+	height:13px; 
+}
+
+input[type="number"]{
+	width:60px; 
+	height:14px; 
+	border: solid 1px #dcdcdc;
+  	transition: box-shadow 0.3s, border 0.3s;
 }
 
 .wrapper .footer{
 	position: absolute;
-	margin-top: 45em;
-	height: 50px;
+	margin-top: 46em;
+	height: 40px;
 }
 
 .wrapper .sidebar ul{

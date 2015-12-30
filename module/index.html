@@ -6,7 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<!-- jQuery file include -->
 	<script type="text/javascript" src="assets/js/jquery.js"></script>
-	
+	<!-- fusioncharts library -->
+	<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+	<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.charts.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -15,18 +17,28 @@
 </div> <!-- end of header -->
 <div class="sidebar">
 
-<!-- 	<ul>
-		<li class="items"><a href="#"/>##items-1##</a>
+<!--
+	<ul>
+		<li class="items"><a href="#"/>items-1</a>
 			<ul>
-				<li><a href="#"/>##subitems##</a>
-				<li><a href="#"/>##subitems##</a>
+				<li><a href="#"/>subitems</a>
+				<li><a href="#"/>subitems</a>
 			</ul>
 		</li>
-	</ul> -->
+	</ul> 
+-->
 </div>
-<div class="container"></div> <!-- end of container -->
+<div class="container">
+	<div class="chart-area">
+		<div id="chart-container"></div>
+	</div>
+	<div class="code-area">
+		<textarea spellcheck="false"></textarea>
+	</div>
+	<div class="chart-attribute-settings"></div>
+</div> <!-- end of container -->
 <div class="footer">
-	copyright @ FusionCharts
+	<!-- copyright @ FusionCharts -->
 </div> <!-- end of footer --> 
 </div> <!-- end of wrapper -->
 
