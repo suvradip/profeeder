@@ -57,11 +57,11 @@ textarea{
 }
 
 input{
-	margin: 5px;
+	margin: 5px 7px;
 }
 
 select{
-	margin: 5px;
+	margin: 5px 6px;
 }
 
 input[type="text"]{

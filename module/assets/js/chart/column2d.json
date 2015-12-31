@@ -2,7 +2,7 @@
     "type": "column2d",
     "renderAt": "chart-container",
     "width": "600",
-    "height": "450",
+    "height": "500",
     "dataFormat": "json",
     "dataSource": {
         "chart": {
