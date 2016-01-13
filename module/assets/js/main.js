@@ -40,14 +40,17 @@ PROFEEDER.element = {
 //chart dropdown list and binding event
 $('.sidebar').append(PROFEEDER.element.select(0,PROFEEDER.charts.length, PROFEEDER.charts)).promise().done(function(){
 	$(this).on('change', function(event) {
-		console.log(event.target.value);
+
+		//clearing this div content.
+		$('.chart-attribute-settings').empty();
 		PROFEEDER.currentChartType = event.target.value;
 		PROFEEDER.chartAttributes.returnData = PROFEEDER.chartAttributes();
 
 		//sidebar navigation onClick list appear
 		window.setTimeout(function(){
 			$('.items').on('click', function(event) {
-			//$(this).children('ul').toggle('slow');
+			$('ul li').removeClass("items_highlight");
+			$(this).addClass('items_highlight');
 			PROFEEDER.viewAttributes($(this).children('a').text());
 			});
 		}, 2000);
@@ -59,7 +62,12 @@ $('.sidebar').append(PROFEEDER.element.select(0,PROFEEDER.charts.length, PROFEED
 
 //sidebar attribute list 
 PROFEEDER.chartAttributes = (function (){
+
 	var data = $.getJSON( 'assets/js/attributes/'+ PROFEEDER.currentChartType +'.json', function( data ) {
+	//remove previous attribute list
+	if($('ul'))
+	$('ul').remove();
+
 	$('.sidebar').append(
 		$('<ul>').append(function(){
 			var para = $(this);
@@ -92,7 +100,7 @@ PROFEEDER.chartData = (function (){
 $('.code-area textarea').change(function(event) {
 	for (var charts in FusionCharts.items)
         FusionCharts.items[charts].dispose();
-	var fc = new FusionCharts(JSON.parse(event.target.value)).render();
+		 new FusionCharts(JSON.parse(event.target.value)).render();
 	PROFEEDER.chartData.returnData.responseJSON = JSON.parse(event.target.value);
 });
 
@@ -111,7 +119,7 @@ PROFEEDER.setAttribute = (function(param){
 
 	var textarea = $('.code-area textarea');
 	textarea.val(JSON.stringify(attr, null, 4));	
-	var fc = new FusionCharts(JSON.parse(textarea.val())).render();
+	new FusionCharts(JSON.parse(textarea.val())).render();
 	
 });
 
@@ -130,13 +138,14 @@ PROFEEDER.viewAttributes = (function(param){
 						$(this).append($('<label style="display:inline-block;'+
 							' min-width:150px;" for="L'+ index_1 + '_' +index_2 +
 							'" title="'+ val_2.description+'">').text(val_2.name));
-						
+							
+
 						if(val_2.type === 'Boolean')
-							$(this).append('<input type="checkbox" id="L'+ index_1 + '_' +index_2 +'"/> ');
+							$(this).append('<input type="checkbox" id="L'+ index_1 + '_' +index_2 +'" '+ (val_2.value ? "checked" : "" ) +' /> ');
 						if(val_2.type === 'Color')
-							$(this).append('<input type="color" /> ');
+							$(this).append('<input type="color" value="'+ (val_2.value ? val_2.value : "") +'" /> ');
 						if(val_2.type === 'Number')
-							$(this).append('<input type="number" /> ');	
+							$(this).append('<input type="number" value="'+ (val_2.value ? val_2.value : "") +'" /> ');	
 
 						if(val_2.type === 'String' &&  typeof (val_2.range) !== 'undefined'){
 							if(val_2.range !== ''){
@@ -145,11 +154,12 @@ PROFEEDER.viewAttributes = (function(param){
 							}
 
 							if(val_2.range === '')
-								$(this).append('<input type="text" /> ');
+								$(this).append('<input type="text" value="'+ (val_2.value ? val_2.value : "") +'" /> ');
 						}
 
 						if(val_2.type === 'String' &&  typeof (val_2.range) === 'undefined')
-							$(this).append('<input type="text" /> ');
+							$(this).append('<input type="text" value="'+ (val_2.value ? val_2.value : "") +'" /> ');
+
 							
 					}));
 			});
@@ -180,7 +190,7 @@ PROFEEDER.viewAttributes = (function(param){
 
 		});
 
-		$('input[type="color"], input[type="number"]').change(function(event) {
+		$('input[type="color"], input[type="number"], input[type="text"]').change(function(event) {
 			var param = {};
 			param.key = $(this).prev().text();
 			param.value = event.target.value;
@@ -195,7 +205,7 @@ PROFEEDER.viewAttributes = (function(param){
 		});
 	});
 
-
+window.PROFEEDER = PROFEEDER;
 })();
 
 

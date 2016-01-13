@@ -18,7 +18,8 @@
                 "description": "While the `palette` attribute allows to select a palette theme that applies to chart background, canvas, font and tool-tips, it does not change the colors of data items (i.e., column, line, pie etc.). Using `paletteColors` attribute, you can specify your custom list of hex colors for the data items. The list of colors have to be separated by comma e.g., `&quot;paletteColors&quot;: &quot;#FF0000, #0372AB, #FF5904...&quot;`. The chart will cycle through the list of specified colors and then render the data plot accordingly. To use the same set of colors throughout all your charts in a web application, you can store the list of palette colors in your application globally and then provide the same in each chart JSON.",
                 "range": "List of hex color codes separated by comma",
                 "type": "String",
-                "name": "paletteColors"
+                "name": "paletteColors",
+                "value": "#0075c2"
             },
             {
                 "description": "It sets the configuration whether the x-axis labels will be displayed or not.",
@@ -73,7 +74,8 @@
                 "description": "If you've opted to show data values, you can show them inside the columns using this attribute. By default, the data values show outside the column.",
                 "range": "0/1",
                 "type": "Boolean",
-                "name": "placeValuesInside"
+                "name": "placeValuesInside",
+                "value" :"1"
             },
             {
                 "description": "FusionCharts XT y-axis is divided into vertical sections using div (divisional) lines. Each div line assumes a value based on its position. Using this attribute you can set whether to show those div line (y-axis) values or not. This attribute shows or hides the y-axis divisional lines and limits. The values of `showLimits` and `showDivLineValues`, if specified explicitly, overrides the value of this attribute.",
@@ -636,12 +638,14 @@
             {
                 "description": "Caption of the chart.",
                 "type": "String",
-                "name": "caption"
+                "name": "caption",
+                "value": "Top 5 Stores by Sales"
             },
             {
                 "description": "Sub-caption of the chart.",
                 "type": "String",
-                "name": "subCaption"
+                "name": "subCaption",
+                "value": "Last month"
             },
             {
                 "description": "X-axis title of the chart.",
@@ -651,7 +655,8 @@
             {
                 "description": "Y-axis title of the chart.",
                 "type": "String",
-                "name": "yAxisName"
+                "name": "yAxisName",
+                "value": "Sales (In USD)"
             }
         ],
         "description": "Using these attributes, you can set the various headings and titles of chart like caption, sub-caption, x-axis and y-axis names etc. "
@@ -675,13 +680,15 @@
                 "description": "Sets the caption font size in pixels",
                 "range": "0 - 72",
                 "type": "Number",
-                "name": "captionFontSize"
+                "name": "captionFontSize",
+                "value":"14"
             },
             {
                 "description": "Sets the sub-caption font size (in pixels)",
                 "range": "0 - 72",
                 "type": "Number",
-                "name": "subCaptionFontSize"
+                "name": "subCaptionFontSize",
+                "value":"14"
             },
             {
                 "description": "Sets the caption font family",
@@ -951,7 +958,8 @@
                 "description": "This attribute sets the background color for the chart. You can set any hex color code as the value of this attribute. To specify a gradient as background color, separate the hex color codes of each color in the gradient using comma. Example: `#FF5904, #FFFFFF`.",
                 "range": "",
                 "type": "separate the hex color codes of each color in the gradient using comma",
-                "name": "bgColor"
+                "name": "bgColor",
+                "value": "#ffffff"
             },
             {
                 "description": "Sets the alpha (transparency) for the background. If you've opted for gradient background, you need to set a list of alpha(s) separated by comma.",
@@ -1135,7 +1143,8 @@
                 "description": "Alpha for column, area, pie border",
                 "range": "0-100",
                 "type": "Number",
-                "name": "plotBorderAlpha"
+                "name": "plotBorderAlpha",
+                "value" :"10"
             },
             {
                 "description": "If you've opted to fill the plot (column, area etc.) as gradient, this attribute lets you set the fill alpha for gradient.",
@@ -1165,7 +1174,8 @@
                 "description": "Specifies the value font color",
                 "range": "Hex Color Code",
                 "type": "Color",
-                "name": "valueFontColor"
+                "name": "valueFontColor",
+                "value":"#ffffff"
             },
             {
                 "description": "Specifies the value font size",
@@ -1285,7 +1295,8 @@
                 "description": "Alpha of divisional lines.",
                 "range": "0-100",
                 "type": "Number",
-                "name": "divLineAlpha"
+                "name": "divLineAlpha",
+                "value" : "10"
             },
             {
                 "description": "Whether the divisional lines should be displayed as dashed lines instead of whole lines.",
@@ -1404,7 +1415,8 @@
                 "description": "Using this attribute, you could add prefix to all the numbers visible on the graph. For example, to represent all dollars figure on the chart, you could specify this attribute to $ to show like $40000, $50000.",
                 "range": "Character",
                 "type": "String",
-                "name": "numberPrefix"
+                "name": "numberPrefix",
+                "value": "$"
             },
             {
                 "description": "Using this attribute, you could add a suffix to all the numbers visible on the graph. For example, to represent all figures quantified as per annum on the chart, you could specify this attribute to '/a' to show like 40000/a, 50000/a.",
@@ -1526,13 +1538,15 @@
                 "description": "Background color for tool tip.",
                 "range": "Hex Color Code",
                 "type": "Color",
-                "name": "toolTipBgColor"
+                "name": "toolTipBgColor",
+                "value":"#000000"
             },
             {
                 "description": "Font color for the tool-tip.",
                 "range": "Hex Color Code",
                 "type": "Color",
-                "name": "toolTipColor"
+                "name": "toolTipColor",
+                "value":"#ffffff"
             },
             {
                 "description": "Border color for tool tip.",

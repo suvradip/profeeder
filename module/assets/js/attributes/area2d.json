@@ -18,7 +18,8 @@
                 "description": "While the `palette` attribute allows to select a palette theme that applies to chart background, canvas, font and tool-tips, it does not change the colors of data items (i.e., column, line, pie etc.). Using `paletteColors` attribute, you can specify your custom list of hex colors for the data items. The list of colors have to be separated by comma e.g., `&quot;paletteColors&quot;: &quot;#FF0000, #0372AB, #FF5904...&quot;`. The chart will cycle through the list of specified colors and then render the data plot accordingly. To use the same set of colors throughout all your charts in a web application, you can store the list of palette colors in your application globally and then provide the same in each chart JSON.",
                 "range": "List of hex color codes separated by comma",
                 "type": "String",
-                "name": "paletteColors"
+                "name": "paletteColors",
+                "value": "#0075c2"
             },
             {
                 "description": "This attribute lets you control whether empty data sets in your data will be connected to each other OR do they appear as broken data sets.",
@@ -80,7 +81,8 @@
                 "description": "Sets the configuration whether data values will be displayed along with the data plot on chart.",
                 "range": "0/1",
                 "type": "Boolean",
-                "name": "showValues"
+                "name": "showValues",
+                "value": "1"
             },
             {
                 "description": "If you've opted to show data values, you can rotate them using this attribute.",
@@ -631,22 +633,26 @@
             {
                 "description": "Caption of the chart.",
                 "type": "String",
-                "name": "caption"
+                "name": "caption",
+                "value": "Sales of Liquor"
             },
             {
                 "description": "Sub-caption of the chart.",
                 "type": "String",
-                "name": "subCaption"
+                "name": "subCaption",
+                "value": "Last week"
             },
             {
                 "description": "X-axis title of the chart.",
                 "type": "String",
-                "name": "xAxisName"
+                "name": "xAxisName",
+                "value": "Day"
             },
             {
                 "description": "Y-axis title of the chart.",
                 "type": "String",
-                "name": "yAxisName"
+                "name": "yAxisName",
+                "value": "Sales (In USD)"
             }
         ],
         "description": "Using these attributes, you can set the various headings and titles of chart like caption, sub-caption, x-axis and y-axis names etc. "
@@ -670,13 +676,15 @@
                 "description": "Sets the caption font size in pixels",
                 "range": "0 - 72",
                 "type": "Number",
-                "name": "captionFontSize"
+                "name": "captionFontSize",
+                "value": "14"
             },
             {
                 "description": "Sets the sub-caption font size (in pixels)",
                 "range": "0 - 72",
                 "type": "Number",
-                "name": "subCaptionFontSize"
+                "name": "subCaptionFontSize",
+                "value": "14"
             },
             {
                 "description": "Sets the caption font family",
@@ -945,8 +953,9 @@
             {
                 "description": "This attribute sets the background color for the chart. You can set any hex color code as the value of this attribute. To specify a gradient as background color, separate the hex color codes of each color in the gradient using comma. Example: `#FF5904, #FFFFFF`.",
                 "range": "",
-                "type": "separate the hex color codes of each color in the gradient using comma",
-                "name": "bgColor"
+                "type": "Color",
+                "name": "bgColor",
+                "value" : "#ffffff"
             },
             {
                 "description": "Sets the alpha (transparency) for the background. If you've opted for gradient background, you need to set a list of alpha(s) separated by comma.",
@@ -957,7 +966,7 @@
             {
                 "description": "If you've opted for a gradient background, this attribute lets you set the ratio of each color constituent.",
                 "range": "",
-                "type": "Ratio of each separated by comma",
+                "type": "String",
                 "name": "bgRatio"
             },
             {
@@ -1086,7 +1095,7 @@
             },
             {
                 "description": "You can load an external logo (JPEG/PNG) to your chart, this attribute lets you specify the URL. Due to cross domain security restrictions it is advised to use a logo from the same domain name as your charts.",
-                "range": "URL",
+                "range": "",
                 "type": "String",
                 "name": "logoURL"
             },
@@ -1142,7 +1151,8 @@
                 "description": "Alpha for column, area, pie border",
                 "range": "0-100",
                 "type": "Number",
-                "name": "plotBorderAlpha"
+                "name": "plotBorderAlpha",
+                "value": "10"
             },
             {
                 "description": "Whether the plot border should appear as dashed.",
@@ -1178,7 +1188,8 @@
                 "description": "If you've opted to fill the plot (column, area etc.) as gradient, this attribute lets you set the fill alpha for gradient.",
                 "range": "0-100",
                 "type": "Number",
-                "name": "plotFillAlpha"
+                "name": "plotFillAlpha",
+                "value":"50"
             },
             {
                 "description": "You can globally add a gradient color to the entire plot of chart by specifying the second color as this attribute. For example, if you've specified individual colors for your dataplots and now you want a gradient that ends in white. You need to specify FFFFFF (white) as this color and the chart will now draw plots as gradient.",
@@ -1406,7 +1417,8 @@
                 "description": "Alpha of divisional lines.",
                 "range": "0-100",
                 "type": "Number",
-                "name": "divLineAlpha"
+                "name": "divLineAlpha",
+                "value":"10"
             },
             {
                 "description": "Whether the divisional lines should be displayed as dashed lines instead of whole lines.",
@@ -1597,7 +1609,8 @@
                 "description": "Using this attribute, you could add prefix to all the numbers visible on the graph. For example, to represent all dollars figure on the chart, you could specify this attribute to $ to show like $40000, $50000.",
                 "range": "Character",
                 "type": "String",
-                "name": "numberPrefix"
+                "name": "numberPrefix",
+                "value": "$"
             },
             {
                 "description": "Using this attribute, you could add a suffix to all the numbers visible on the graph. For example, to represent all figures quantified as per annum on the chart, you could specify this attribute to '/a' to show like 40000/a, 50000/a.",
@@ -1844,13 +1857,15 @@
                 "description": "Background color for tool tip.",
                 "range": "Hex Color Code",
                 "type": "Color",
-                "name": "toolTipBgColor"
+                "name": "toolTipBgColor",
+                "value": "#000000"
             },
             {
                 "description": "Font color for the tool-tip.",
                 "range": "Hex Color Code",
                 "type": "Color",
-                "name": "toolTipColor"
+                "name": "toolTipColor",
+                "value": "#ffffff"
             },
             {
                 "description": "Border color for tool tip.",
