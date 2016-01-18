@@ -30,7 +30,10 @@ PROFEEDER.element = {
 				{
 					for(var i=start; i<end; i++)
 						temp += '<option>'+ array[i] +'</option>' ;				
-				} 
+				} else {
+					for(var i=start; i<=end; i++)
+						temp += '<option>'+ i +'</option>' ;
+				}
 				temp += '</select>';
 				return temp;
 			}
@@ -62,8 +65,8 @@ $('.sidebar').append(PROFEEDER.element.select(0,PROFEEDER.charts.length, PROFEED
 
 //sidebar attribute list 
 PROFEEDER.chartAttributes = (function (){
-
-	var data = $.getJSON( 'assets/js/attributes/'+ PROFEEDER.currentChartType +'.json', function( data ) {
+	//to prevent catch load
+	var data = $.getJSON( 'assets/js/attributes/'+ PROFEEDER.currentChartType +'.json?nocache='+(Math.random()*100 + 0.5), function( data ) {
 	//remove previous attribute list
 	if($('ul'))
 	$('ul').remove();
@@ -85,7 +88,8 @@ PROFEEDER.chartAttributes = (function (){
 
 // render chart
 PROFEEDER.chartData = (function (){
-		var data = $.getJSON('assets/js/chart/'+ PROFEEDER.currentChartType +'.json', function(data) {
+		//to prevent catch load
+		var data = $.getJSON('assets/js/chart/'+ PROFEEDER.currentChartType +'.json?nocache='+(Math.random()*100 + 0.5), function(data) {
 		var fc = new FusionCharts(data).render();
 		$('.code-area textarea').val(JSON.stringify(data, null, 4));
 		return data;
@@ -102,12 +106,14 @@ $('.code-area textarea').change(function(event) {
         FusionCharts.items[charts].dispose();
 		 new FusionCharts(JSON.parse(event.target.value)).render();
 	PROFEEDER.chartData.returnData.responseJSON = JSON.parse(event.target.value);
+	PROFEEDER.viewAttributes();
 });
 
 //attribute set
 PROFEEDER.setAttribute = (function(param){
+	debugger;
 	var attr = PROFEEDER.chartData.returnData.responseJSON;
-	
+	delete attr.dataSource.setData;
 	if(attr.dataSource.hasOwnProperty('chart'))
 		attr.dataSource.chart[param.key] = param.value;
 	
@@ -125,6 +131,9 @@ PROFEEDER.setAttribute = (function(param){
 
 //element creation and set events
 PROFEEDER.viewAttributes = (function(param){
+	if(typeof param === 'undefined')
+	param = PROFEEDER.viewAttributes.param;
+		
 	$('.chart-attribute-settings').text('');
 	$.each(PROFEEDER.chartAttributes.returnData.responseJSON, function(index_1, val_1) {
 		if(val_1.table === param)
@@ -139,28 +148,49 @@ PROFEEDER.viewAttributes = (function(param){
 							' min-width:150px;" for="L'+ index_1 + '_' +index_2 +
 							'" title="'+ val_2.description+'">').text(val_2.name));
 							
+						var temp = PROFEEDER.chartData.returnData.responseJSON.dataSource;
+						temp.setData = temp.chart.hasOwnProperty(val_2.name) ? temp.chart[val_2.name] : "";
 
 						if(val_2.type === 'Boolean')
-							$(this).append('<input type="checkbox" id="L'+ index_1 + '_' +index_2 +'" '+ (val_2.value ? "checked" : "" ) +' /> ');
+							$(this).append('<input type="checkbox" id="L'+ index_1 + '_' +index_2 +'" '+ (temp.setData  !== "" ? "checked" : "" ) +' /> ');
 						if(val_2.type === 'Color')
-							$(this).append('<input type="color" value="'+ (val_2.value ? val_2.value : "") +'" /> ');
+							$(this).append('<input type="color" value="'+ (temp.setData) +'" /> ');
+
 						if(val_2.type === 'Number')
-							$(this).append('<input type="number" value="'+ (val_2.value ? val_2.value : "") +'" /> ');	
+						{
+							if(val_2.range.indexOf('-') > -1)
+							{
+								var range = val_2.range.split('-');						
+								$(this).append(PROFEEDER.element.select(range[0].trim(),range[1].trim())).promise().done(function(){
+									$(this.children('select')).append('<option>select</option>');
+									$(this.children('select')).val((temp.setData !== "" ? temp.setData : "select"));
+								});
+							} else
+								$(this).append('<input type="number" value="'+ (temp.setData) +'" /> ');
+						}	
+							
+						//if(val_2.type === 'Number')
+						//	$(this).append('<input type="number" value="'+ (temp.setData) +'" /> ');	
 
 						if(val_2.type === 'String' &&  typeof (val_2.range) !== 'undefined'){
 							if(val_2.range !== ''){
 								var range = val_2.range.split(',');
-								$(this).append(PROFEEDER.element.select(0,range.length,range));
+								$(this).append(PROFEEDER.element.select(0,range.length,range)).promise().done(function(){
+									
+									$(this.children('select')).append('<option>select</option>');
+									$(this.children('select')).val((temp.setData !== "" ? temp.setData : "select"));
+
+								});
 							}
 
 							if(val_2.range === '')
-								$(this).append('<input type="text" value="'+ (val_2.value ? val_2.value : "") +'" /> ');
+								$(this).append('<input type="text" value="'+ (temp.setData ) +'" /> ');
 						}
 
 						if(val_2.type === 'String' &&  typeof (val_2.range) === 'undefined')
-							$(this).append('<input type="text" value="'+ (val_2.value ? val_2.value : "") +'" /> ');
+							$(this).append('<input type="text" value="'+ (temp.setData ) +'" /> ');
 
-							
+						
 					}));
 			});
 		}	
@@ -203,6 +233,9 @@ PROFEEDER.viewAttributes = (function(param){
 			param.value = event.target.value;
 			PROFEEDER.setAttribute(param);
 		});
+
+		//set last selected sidebar cosmetic
+		PROFEEDER.viewAttributes.param = param;	
 	});
 
 window.PROFEEDER = PROFEEDER;

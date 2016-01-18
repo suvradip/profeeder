@@ -2,7 +2,7 @@
     "type": "area2d",
     "renderAt": "chart-container",
     "width": "100%",
-    "height": "100%",
+    "height": "70%",
     "dataFormat": "json",
     "dataSource": {
         "chart": {
@@ -20,7 +20,8 @@
             "divLineAlpha": "10",
             "showValues": "1",
             "captionFontSize": "14",
-            "subcaptionFontSize": "14",
+            "captionAlignment": "center",
+            "subCaptionFontSize": "14",
             "toolTipColor": "#ffffff",
             "toolTipBgColor": "#000000",
             "toolTipBgAlpha": "80",
