@@ -111,8 +111,8 @@ $('.code-area textarea').change(function(event) {
 
 //attribute set
 PROFEEDER.setAttribute = (function(param){
-	debugger;
 	var attr = PROFEEDER.chartData.returnData.responseJSON;
+	//temporary fix
 	delete attr.dataSource.setData;
 	if(attr.dataSource.hasOwnProperty('chart'))
 		attr.dataSource.chart[param.key] = param.value;
@@ -169,9 +169,6 @@ PROFEEDER.viewAttributes = (function(param){
 								$(this).append('<input type="number" value="'+ (temp.setData) +'" /> ');
 						}	
 							
-						//if(val_2.type === 'Number')
-						//	$(this).append('<input type="number" value="'+ (temp.setData) +'" /> ');	
-
 						if(val_2.type === 'String' &&  typeof (val_2.range) !== 'undefined'){
 							if(val_2.range !== ''){
 								var range = val_2.range.split(',');
