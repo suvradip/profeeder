@@ -120,6 +120,7 @@ PROFEEDER.setAttribute = (function(paramData){
 	//remove disable attributes
 	if(paramData.value === 'select' || paramData.value === 0 || paramData.value === ''){
 		delete attr.dataSource.chart[paramData.key];
+		delete attr.dataSource.data[PROFEEDER.viewAttributes.level][paramData.key];	
 		paramData = {};
 	}
 
@@ -127,9 +128,23 @@ PROFEEDER.setAttribute = (function(paramData){
 	if(attr.dataSource.hasOwnProperty('chart') && paramData && !PROFEEDER.viewAttributes.path)
 		attr.dataSource.chart[paramData.key] = paramData.value;
 
-	if(attr.dataSource.hasOwnProperty('data') && paramData && PROFEEDER.viewAttributes.path)
-	console.log('ok');	
-		
+	if(attr.dataSource.hasOwnProperty('data') && paramData && PROFEEDER.viewAttributes.path === 'data' && PROFEEDER.viewAttributes.level !== 'select')
+	attr.dataSource.data[PROFEEDER.viewAttributes.level][paramData.key] = paramData.value;	
+	
+	if(!attr.dataSource.hasOwnProperty('trendlines') && paramData && PROFEEDER.viewAttributes.path && PROFEEDER.viewAttributes.path === 'line' ){
+	var temp = {};
+	temp[paramData.key]	= paramData.value;
+	attr.dataSource.trendlines = [];
+	var line = [];
+	line.push(temp);
+	var test = {};
+	test.line = line;
+	attr.dataSource.trendlines.push(test);
+   		
+	}else {
+		attr.dataSource.trendlines[0].line[0][paramData.key]	= paramData.value;
+	}
+
 	PROFEEDER.chartData.returnData.responseJSON = attr;
 	for (var charts in FusionCharts.items)
         FusionCharts.items[charts].dispose();
@@ -208,29 +223,22 @@ PROFEEDER.viewAttributes = (function(paramObj){
 			if(val_1.path && paramObj.next){
 				PROFEEDER.viewAttributes.path = val_1.path;
 				$('.chart-attribute-settings').prepend(
-					$('<div>').append(function(){
+					$('<div class="data-attr">').append(function(){
 						$(this).append(
 							$('<p>').append(function(){
-								$(this).text('set ' + val_1.path + ' attribute' );
-								$(this).on('click', function(event) {					
-								$('.chart-attribute-settings').toggleClass('toggle-overflow');
-								$('.overlay-div').toggle('slow');
-								PROFEEDER.viewAttributes({'class':'.overlay-div:not(.overlay-div select)'});
-								$('.overlay-div').prepend(
-									$('<p>').append(function(){
-										$(this).text('select data level');
-										$(this).append(PROFEEDER.element.select(0, temp.data.length)).promise().done(function(){
-											$(this).children('select').on('change', function(event) {
-											
-											//code
-											
-										});
-										});
-									}));
+								$(this).text('select ' + val_1.path + ' level' );
+								$(this).append(PROFEEDER.element.select(0, temp.data.length));
+								$(this).children('select').prepend('<option>select</option>');
+								$(this).children('select').val("select");
+								$(this).children('select').off();
+								PROFEEDER.viewAttributes.path.level = 'select';
+								$(this).children('select').on('click', function(event) {
+									PROFEEDER.viewAttributes.level = event.target.value;
+								
 								});
-							}));
-						
-						$(this).append('<div class="overlay-div">');					
+
+
+							}));				
 					}));
 			}
 		}	
@@ -275,7 +283,7 @@ PROFEEDER.setEventOnElemennts = (function(){
 			PROFEEDER.setAttribute(paramData);
 		});
 
-		$('select').change(function(event) {
+		$('select:not(.data-attr select)').change(function(event) {
 			var param = {};
 			param.key = $(this).prev().text();
 			param.value = event.target.value;
