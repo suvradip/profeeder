@@ -8,7 +8,6 @@
 		src: url(fonts/OpenSans-Regular.ttf);
 }
 
-
 body,html{
 	padding: 0;
 	margin: 0;
@@ -62,7 +61,6 @@ textarea{
 }
 
 .wrapper .container .chart-attribute-settings{
-	margin-top: 30em;
 	border: 1px solid #f5f5f0;
 	width: 100%;
 	height: 15em;
@@ -70,6 +68,7 @@ textarea{
 	overflow: auto;
 	font-family: OpenSans-Regular;
 	font-size: 13px;
+	position: relative;
 }
 
 input{
@@ -109,18 +108,21 @@ input[type="number"]{
 	font-size: 13px;
 }
 .wrapper .sidebar ul li{
-padding: 3px 10px;
+	padding: 3px 10px;
 }
 .wrapper .sidebar ul li ul{
 	display:none;
 }
 .wrapper .sidebar ul li ul a{
-text-decoration: none;	
-padding: 5px 0;
-line-height:2;
+	text-decoration: none;	
+	padding: 5px 0;
+	line-height:2;
 }
 
 .items_highlight{
 	border: 1px solid rgb(169, 169, 169);
 	background-color: rgb(245, 245, 220);
+}
+.wrapper .container .toggle-overflow{
+	overflow: hidden;
 }

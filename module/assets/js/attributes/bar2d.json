@@ -16,7 +16,7 @@
             },
             {
                 "description": "While the `palette` attribute allows to select a palette theme that applies to chart background, canvas, font and tool-tips, it does not change the colors of data items (i.e., column, line, pie etc.). Using `paletteColors` attribute, you can specify your custom list of hex colors for the data items. The list of colors have to be separated by comma e.g., `&quot;paletteColors&quot;: &quot;#FF0000, #0372AB, #FF5904...&quot;`. The chart will cycle through the list of specified colors and then render the data plot accordingly. To use the same set of colors throughout all your charts in a web application, you can store the list of palette colors in your application globally and then provide the same in each chart JSON.",
-                "range": "List of hex color codes separated by comma",
+                "range": "",
                 "type": "String",
                 "name": "paletteColors",
                 "value": "#0075c2"
@@ -2139,6 +2139,7 @@
         "attrs": [
             {
                 "description": "The starting value for the trendline. Say, if you want to plot a slanted trendline from value 102 to 109, the `startValue` will be 102.",
+                "range": "Numeric Value",
                 "type": "Number",
                 "name": "startValue"
             },
@@ -2157,7 +2158,7 @@
             {
                 "description": "Color of the trend line and its associated text",
                 "range": "Hex Color Code",
-                "type": "String",
+                "type": "Color",
                 "name": "color"
             },
             {
