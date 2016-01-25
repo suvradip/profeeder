@@ -32,7 +32,7 @@ PROFEEDER.element = {
 						temp += '<option>'+ array[i] +'</option>' ;				
 				} else {
 					for(var k=start; k<=end; k++)
-						temp += '<option>'+ k +'</option>' ;
+						temp += '<option value="'+ (k-1) +'">'+ k +'</option>' ;
 				}
 				temp += '</select>';
 				return temp;
@@ -54,7 +54,7 @@ $('.sidebar').append(PROFEEDER.element.select(0,PROFEEDER.charts.length, PROFEED
 			$('.items').on('click', function(event) {
 			$('ul li').removeClass("items_highlight");
 			$(this).addClass('items_highlight');
-			delete PROFEEDER.viewAttributes.path;
+			delete PROFEEDER.path;
 			PROFEEDER.viewAttributes({'name': $(this).children('a').text(),'class': '.chart-attribute-settings', 'next':true});
 			});
 		}, 2000);
@@ -100,7 +100,6 @@ PROFEEDER.chartData = (function (){
 });
 
 
-
 //on changes in textArea
 $('.code-area textarea').change(function(event) {
 	for (var charts in FusionCharts.items)
@@ -117,32 +116,57 @@ PROFEEDER.setAttribute = (function(paramData){
 	//temporary fix
 	delete attr.dataSource.setData;
 
-	//remove disable attributes
+	//remove the disable attributes
 	if(paramData.value === 'select' || paramData.value === 0 || paramData.value === ''){
+		
 		delete attr.dataSource.chart[paramData.key];
-		delete attr.dataSource.data[PROFEEDER.viewAttributes.level][paramData.key];	
+		
+		//for data object operation
+		if(paramData && PROFEEDER.path === 'data' && 
+			PROFEEDER.level !== 'select' )
+			delete attr.dataSource.data[PROFEEDER.level][paramData.key];
+		else if(paramData && PROFEEDER.path === 'data' && 
+			PROFEEDER.level === 'select')
+			delete attr.dataSource.chart[paramData.key];
+		
+		//for trendline operation
+		 if(attr.dataSource.hasOwnProperty('trendlines') && paramData && 
+			PROFEEDER.path === 'line' ){
+			delete attr.dataSource.trendlines[0].line[0][paramData.key];
+		}
+
 		paramData = {};
 	}
 
 	//include attribute in chart object
-	if(attr.dataSource.hasOwnProperty('chart') && paramData && !PROFEEDER.viewAttributes.path)
+	if(attr.dataSource.hasOwnProperty('chart') && paramData && !PROFEEDER.path)
 		attr.dataSource.chart[paramData.key] = paramData.value;
 
-	if(attr.dataSource.hasOwnProperty('data') && paramData && PROFEEDER.viewAttributes.path === 'data' && PROFEEDER.viewAttributes.level !== 'select')
-	attr.dataSource.data[PROFEEDER.viewAttributes.level][paramData.key] = paramData.value;	
+	//include attribute in data object
+	if(attr.dataSource.hasOwnProperty('data') && paramData && 
+		PROFEEDER.path === 'data' && 
+		PROFEEDER.level !== 'select')
+		attr.dataSource.data[PROFEEDER.level][paramData.key] = paramData.value;
+	else if(attr.dataSource.hasOwnProperty('data') && paramData && 
+		PROFEEDER.path === 'data' && 
+		PROFEEDER.level === 'select')
+		attr.dataSource.chart[paramData.key] = paramData.value;
 	
-	if(!attr.dataSource.hasOwnProperty('trendlines') && paramData && PROFEEDER.viewAttributes.path && PROFEEDER.viewAttributes.path === 'line' ){
-	var temp = {};
-	temp[paramData.key]	= paramData.value;
-	attr.dataSource.trendlines = [];
-	var line = [];
-	line.push(temp);
-	var test = {};
-	test.line = line;
-	attr.dataSource.trendlines.push(test);
+	//inlude attribute in trendline object
+	if(!attr.dataSource.hasOwnProperty('trendlines') && paramData && 
+		PROFEEDER.path === 'line' ){
+		var temp = {};
+		temp[paramData.key]	= paramData.value;
+		attr.dataSource.trendlines = [];
+		var line = [];
+		line.push(temp);
+		var test = {};
+		test.line = line;
+		attr.dataSource.trendlines.push(test);
    		
-	}else {
-		attr.dataSource.trendlines[0].line[0][paramData.key]	= paramData.value;
+	}else if(attr.dataSource.hasOwnProperty('trendlines') && paramData && 
+		PROFEEDER.path === 'line' ){
+		attr.dataSource.trendlines[0].line[0][paramData.key] = paramData.value;
 	}
 
 	PROFEEDER.chartData.returnData.responseJSON = attr;
@@ -181,7 +205,8 @@ PROFEEDER.viewAttributes = (function(paramObj){
 					temp.setData = temp.chart.hasOwnProperty(val_2.name) ? temp.chart[val_2.name] : "";
 
 					if(val_2.type === 'Boolean')
-						$(this).append('<input type="checkbox" id="L'+ index_1 + '_' +index_2 +'" '+ (temp.setData  === "1" ? "checked" : "" ) +' /> ');
+						$(this).append('<input type="checkbox" id="L'+ index_1 + '_' +index_2 +'" '+ 
+							(temp.setData  === "1" ? "checked" : "" ) +' /> ');
 					if(val_2.type === 'Color')
 						$(this).append('<input type="color" value="'+ (temp.setData) +'" /> ');
 
@@ -220,20 +245,22 @@ PROFEEDER.viewAttributes = (function(paramObj){
 				}));
 			});
 			
-			if(val_1.path && paramObj.next){
-				PROFEEDER.viewAttributes.path = val_1.path;
+			if(val_1.path && paramObj.next && val_1.path !=='line'){
+				PROFEEDER.path = val_1.path;
 				$('.chart-attribute-settings').prepend(
 					$('<div class="data-attr">').append(function(){
 						$(this).append(
 							$('<p>').append(function(){
 								$(this).text('select ' + val_1.path + ' level' );
-								$(this).append(PROFEEDER.element.select(0, temp.data.length));
-								$(this).children('select').prepend('<option>select</option>');
-								$(this).children('select').val("select");
+								$(this).append(PROFEEDER.element.select(1, temp.data.length));
+								 $(this).children('select').prepend('<option>select</option>');
+								 $(this).children('select').val("select");
 								$(this).children('select').off();
-								PROFEEDER.viewAttributes.path.level = 'select';
+								//default depth
+								PROFEEDER.level = 'select';
+								//if level change
 								$(this).children('select').on('click', function(event) {
-									PROFEEDER.viewAttributes.level = event.target.value;
+									PROFEEDER.level = event.target.value;
 								
 								});
 

@@ -2332,7 +2332,7 @@
             {
                 "description": "Color of the trend line and its associated text",
                 "range": "Hex Color Code",
-                "type": "String",
+                "type": "Color",
                 "name": "color"
             },
             {

@@ -2089,6 +2089,7 @@
         "attrs": [
             {
                 "description": "The starting value for the trendline. Say, if you want to plot a slanted trendline from value 102 to 109, the `startValue` will be 102.",
+                "range": "Numeric Value",
                 "type": "Number",
                 "name": "startValue"
             },
@@ -2107,7 +2108,7 @@
             {
                 "description": "Color of the trend line and its associated text",
                 "range": "Hex Color Code",
-                "type": "color",
+                "type": "Color",
                 "name": "color"
             },
             {
