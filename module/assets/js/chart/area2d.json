@@ -11,7 +11,6 @@
             "xAxisName": "Day",
             "yAxisName": "Sales (In USD)",
             "numberPrefix": "$",
-            "paletteColors": "#0075c2",
             "bgColor": "#ffffff",
             "plotBorderAlpha": "10",
             "plotFillAlpha": "50",
