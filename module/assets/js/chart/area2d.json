@@ -13,6 +13,7 @@
             "numberPrefix": "$",
             "bgColor": "#ffffff",
             "plotBorderAlpha": "10",
+            "paletteColors": "#0075c2",
             "plotFillAlpha": "50",
             "showXAxisLine": "1",
             "axisLineAlpha": "25",
