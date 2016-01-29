@@ -1964,7 +1964,7 @@
         "attrs": [
             {
                 "description": "Lets you specify font face for the x-axis data labels.",
-                "range": "Valid font face",
+                "range": "",
                 "type": "String",
                 "name": "font"
             },
@@ -1976,7 +1976,7 @@
             },
             {
                 "description": "Lets you specify font size for the x-axis data labels.",
-                "range": "",
+                "range": "1-72",
                 "type": "Number",
                 "name": "fontSize"
             }
@@ -2216,7 +2216,7 @@
         "attrs": [
             {
                 "description": "This attribute sets the alpha (transparency) of the entire dataset.",
-                "range": "0-100 or Comma Separated List",
+                "range": "0-100",
                 "type": "String",
                 "name": "alpha"
             },

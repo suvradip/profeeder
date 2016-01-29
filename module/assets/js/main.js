@@ -8,7 +8,7 @@ PROFEEDER.windowHeight = $(document).height();
 PROFEEDER.windowWidth = $(window).width();
 //chart type
 PROFEEDER.charts = [
-'select', 'area2d', 'bar2d', 'bar3d', 'column2d', 'msbar2d'
+'select', 'area2d', 'bar2d', 'bar3d', 'column2d', 'msbar2d', 'angulargauge'
 ];
 
 
@@ -55,7 +55,8 @@ $('.sidebar').append(PROFEEDER.element.select(0,PROFEEDER.charts.length, PROFEED
 			$('ul li').removeClass("items_highlight");
 			$(this).addClass('items_highlight');
 			delete PROFEEDER.path;
-			PROFEEDER.viewAttributes({'name': $(this).children('a').text(),'class': '.chart-attribute-settings', 'next':true});
+			PROFEEDER.viewAttributes({'name': $(this).children('a').text(),'class': '.chart-attribute-settings',
+			 'next':true});
 			});
 		}, 2000);
 		
@@ -67,7 +68,8 @@ $('.sidebar').append(PROFEEDER.element.select(0,PROFEEDER.charts.length, PROFEED
 //sidebar attribute list 
 PROFEEDER.chartAttributes = (function (){
 	//to prevent catch load
-	var data = $.getJSON( 'assets/js/attributes/'+ PROFEEDER.currentChartType +'.json?nocache='+(Math.random()*100 + 0.5), function( data ) {
+	var data = $.getJSON( 'assets/js/attributes/'+ PROFEEDER.currentChartType +'.json?nocache='+
+		(Math.random()*100 + 0.5), function( data ) {
 	//remove previous attribute list
 	if($('ul'))
 	$('ul').remove();
@@ -90,7 +92,8 @@ PROFEEDER.chartAttributes = (function (){
 // render chart
 PROFEEDER.chartData = (function (){
 		//to prevent catch load
-		var data = $.getJSON('assets/js/chart/'+ PROFEEDER.currentChartType +'.json?nocache='+(Math.random()*100 + 0.5), function(data) {
+		var data = $.getJSON('assets/js/chart/'+ PROFEEDER.currentChartType +'.json?nocache='+
+			(Math.random()*100 + 0.5), function(data) {
 		var fc = new FusionCharts(data).render();
 		$('.code-area textarea').val(JSON.stringify(data, null, 4));
 		return data;
@@ -125,9 +128,18 @@ PROFEEDER.setAttribute = (function(paramData){
 		if(paramData && PROFEEDER.path === 'data' && 
 			PROFEEDER.level !== 'select' )
 			delete attr.dataSource.data[PROFEEDER.level][paramData.key];
+
 		else if(paramData && PROFEEDER.path === 'data' && 
 			PROFEEDER.level === 'select')
 			delete attr.dataSource.chart[paramData.key];
+
+		else if(paramData && PROFEEDER.path === 'categories' &&
+			PROFEEDER.level === 'select')
+			delete attr.dataSource.categories[0][paramData.key];
+
+		else if(paramData && PROFEEDER.path === 'categories' &&
+			PROFEEDER.level !== 'select')
+			delete attr.dataSource.categories[0].category[PROFEEDER.level][paramData.key] ;
 		
 		//for trendline operation
 		 if(attr.dataSource.hasOwnProperty('trendlines') && paramData && 
@@ -168,6 +180,11 @@ PROFEEDER.setAttribute = (function(paramData){
 		PROFEEDER.path === 'line' ){
 		attr.dataSource.trendlines[0].line[0][paramData.key] = paramData.value;
 	}
+
+	//include attribute in categories
+	if(attr.dataSource.hasOwnProperty('categories') && paramData && 
+		PROFEEDER.path === 'categories')
+		attr.dataSource.categories[0][paramData.key] = paramData.value;
 
 	PROFEEDER.chartData.returnData.responseJSON = attr;
 	for (var charts in FusionCharts.items)
@@ -215,7 +232,8 @@ PROFEEDER.viewAttributes = (function(paramObj){
 						if(val_2.range.indexOf('-') > -1)
 						{
 							var range = val_2.range.split('-');						
-							$(this).append(PROFEEDER.element.select(range[0].trim(),range[1].trim())).promise().done(function(){
+							$(this).append(PROFEEDER.element.select(range[0].trim(),
+								range[1].trim())).promise().done(function(){
 								$(this.children('select')).prepend('<option>select</option>');
 								$(this.children('select')).val((temp.setData !== "" ? temp.setData : "select"));
 							});
@@ -245,7 +263,7 @@ PROFEEDER.viewAttributes = (function(paramObj){
 				}));
 			});
 			
-			if(val_1.path && paramObj.next && val_1.path !=='line'){
+			if(val_1.path && paramObj.next && val_1.path ==='data'){
 				PROFEEDER.path = val_1.path;
 				$('.chart-attribute-settings').prepend(
 					$('<div class="data-attr">').append(function(){
@@ -267,7 +285,13 @@ PROFEEDER.viewAttributes = (function(paramObj){
 
 							}));				
 					}));
-			}
+			
+			} else if(val_1.path && paramObj.next && val_1.path ==='categories'){
+				PROFEEDER.path = val_1.path;
+			} 
+
+
+
 		}	
 	});
 
